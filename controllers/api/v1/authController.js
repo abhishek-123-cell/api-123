@@ -123,9 +123,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   const user = await User.findOne({ email });
 
-  if (!user) {
-    return next(new AppError('User not found', 404));
-  }
+ 
 
   if (user.emailVerification === false) {
     return next(new AppError('verify your email first', 401));
